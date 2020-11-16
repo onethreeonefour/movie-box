@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { API_URL, API_KEY, IMAGE_URL } from '../../Config'
-import { Link } from 'react-router-dom'
 import Trending from './Trending'
+import Advert from './Advert'
 
 function Landing() {
 
     const [Hero, setHero] = useState();
 
     useEffect(() => {
-        fetch(`${API_URL}trending/all/day?api_key=${API_KEY}`)
+        fetch(`${API_URL}movie/popular?api_key=${API_KEY}`)
             .then(res => res.json())
             .then(res => {
                 //console.log(res)
@@ -19,8 +19,11 @@ function Landing() {
 
     return (
         <>
-            <div className="hero-container">
-                {Hero ?
+            {Hero ?
+                <div className="hero-container" style={{
+                    backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%),url(${IMAGE_URL}/original${Hero[Math.floor(Math.random() * 6)].backdrop_path}`
+                }}>
+
                     <div className="hero-grid" >
                         <div>
                             <h1>Welcome To The MovieBox</h1>
@@ -28,29 +31,15 @@ function Landing() {
                             <input></input>
                             <button>Search</button>
                         </div>
-                        <div className="hero-grid-images">
-                            {Hero.slice(0, 6).map((data, index) => {
-                                if (data.media_type === "movie") {
-                                    return <Link to={`/movie/${data.id}`} key={index}>
-                                        <div className="hero-img-container ">
-                                            <img src={`${IMAGE_URL}/w185${data.poster_path}`} alt="hero"></img>
-                                            <p>{data.title}</p>
-                                        </div>
-                                    </Link>
-                                }
-                                else return <Link to={`/tv/${data.id}`} key={index}>
-                                    <div className="hero-img-container ">
-                                        <img src={`${IMAGE_URL}/w185${data.poster_path}`} alt="hero"></img>
-                                        <p>{data.name}</p>
-                                    </div>
-                                </Link>
-                            })}
-                        </div>
-                    </div> :
-                    <div>Loading</div>}
-            </div>
+
+                    </div>
+                </div> :
+                <div className="loading-container"><h1>Loading</h1></div>}
             <div>
                 <Trending />
+            </div>
+            <div>
+                <Advert />
             </div>
         </>
     )

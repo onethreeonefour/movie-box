@@ -10,13 +10,15 @@ a {
 body {
     margin: 0px;
     font-family: 'segoe ui';
+    background-color: black;
 }
 
 .nav {
     height: 50px;
-    width: 100%;
-    background-color: #202020;
+    width: 95%;
+    background-color: black;
     position: relative;
+    margin: auto;
 }
 
 .nav>.nav-header {
@@ -105,7 +107,7 @@ body {
 footer {
     align-items: center;
     text-align: center;
-    background-color: #202020;
+    background-color: #000000;
     padding: 2rem;
     color: white;
 }

@@ -1,7 +1,8 @@
-$darkblue: #364f6b;
-$lightblue: #3fc1c9;
+$teal: #05cfd3;
+$purple: #590995;
 $white: #f5f5f5;
-$red: #d63d3d;
+$green: #03c4a1;
+$red: #c62a88;
 $raleway: "Raleway", sans-serif;
 //Global
 * {
@@ -23,36 +24,59 @@ button {
 }
 
 .carousel {
+    text-align: left;
+    margin: auto;
+
     margin: auto;
     img {
         height: auto;
         max-width: 100%;
         object-fit: cover;
         padding-top: 1rem;
-        border-radius: 4px;
     }
-    text-align: center;
+    div {
+        max-width: 80%;
+    }
     a {
-        color: black;
+        color: white;
     }
 }
 
 .vote-average {
-    background-color: black;
-    color: $white;
-    position: absolute;
-    bottom: 20%;
-    right: 5%;
+    background-color: $red;
+    color: white;
+    position: fixed;
+    top: 0;
     padding: 1rem;
     border-radius: 50%;
     font-weight: bolder;
 }
+.loading-container {
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        font-size: 3rem;
+    }
+    color: $green;
+    text-transform: uppercase;
+}
 //End Global
+
+//Landing
 .hero-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
+    height: 80vh;
+    text-align: center;
+    padding: 4rem 0 4rem 0;
+    color: white;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-size: 100%, cover;
+    background-position: center;
     h1 {
         padding-bottom: 2rem;
         font-size: 2.5rem;
@@ -62,50 +86,133 @@ button {
         font-weight: lighter;
         padding-bottom: 1rem;
     }
-    padding: 4rem 0 4rem 0;
-    background: rgb(33, 163, 200);
-    background: radial-gradient(
-            circle,
-            rgba(33, 163, 200, 0.4598214285714286) 0%,
-            rgba(15, 50, 200, 0.5802696078431373) 100%,
-            rgba(30, 32, 200, 1) 100%
-        ),
-        url("./Images/hexellence.png");
-
-    .hero-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        width: 80%;
-        justify-content: center;
-        align-items: center;
+    input {
+        padding: 1rem;
+        width: 100%;
+        font-size: 1.5rem;
     }
-    .hero-grid-images {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-left: auto;
-        text-align: center;
-        img {
-            transition: all 0.3s ease-in-out;
-        }
-        img:hover {
-            filter: saturate(150%);
-        }
+    button {
+        padding: 1rem;
+        background-color: $green;
+        color: white;
+        border: 2px solid $green;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 1.5rem;
     }
 }
+
+//Landing Carousel
 .trending-container {
-    width: 80%;
     margin: auto;
-    padding: 4rem 0 4rem 0;
+    padding: 4rem 3rem 5rem 3rem;
+    background-color: rgb(5, 5, 5);
+    color: white;
     .trending-button {
         display: inline-flex;
         gap: 0.5rem;
-
+        padding: 2rem 0 2rem 0;
         button {
             background-color: $white;
+            border: none;
+            font-size: 1.1rem;
+            border-radius: 3px;
             width: 250px;
             padding: 1rem;
             text-transform: uppercase;
+            cursor: pointer;
+            outline: none;
+        }
+    }
+}
+//Landing Advert
+.advert-container {
+    width: 100%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-size: 100%, cover;
+    background-position: center;
+    color: white;
+    padding: 4rem;
+    h1 {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+    }
+    h2 {
+        padding: 2rem 0 2rem 0;
+        text-align: center;
+    }
+    ul {
+        margin-top: 2rem;
+        list-style-type: none;
+        padding-bottom: 2rem;
+    }
+    .advert-grid {
+        margin: auto;
+        width: 60%;
+    }
+
+    .advert-classics {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        img {
+            transition: all 0.4s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.03);
+        }
+    }
+    .join-today-button {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-top: 2rem;
+        background-color: $green;
+        width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem;
+        text-transform: uppercase;
+        font-weight: bolder;
+        font-size: 1.25rem;
+    }
+}
+//Landing Finished
+
+//Movie-TV Page
+.heading-container {
+    height: 80vh;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-size: 100%, cover;
+    background-position: center;
+    color: white;
+
+    .heading-grid {
+        height: 80vh;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: auto auto;
+        width: 80%;
+        gap: 3rem;
+        margin: auto;
+        .tagline {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: lighter;
+            font-style: italic;
+        }
+        .user-score {
+            background-color: $red;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+        p,
+        h4 {
+            padding: 1rem 0 1rem 0;
         }
     }
 }
