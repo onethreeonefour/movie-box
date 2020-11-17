@@ -104,36 +104,36 @@ function TrendingMovies() {
             >
                 {TV.active ? TV.data.map((data, index) => {
                     return <React.Fragment key={index}>
-                        <Link to={`/tv/${data.id}`}>
+                        <a href={`/tv/${data.id}`}>
                             <div>
                                 <img src={`${IMAGE_URL}/w185${data.poster_path}`} alt="hero"></img>
                                 <p><span className="vote-average">{data.vote_average.toFixed(1)}</span>{data.name} </p>
                             </div>
 
-                        </Link>
+                        </a>
                     </React.Fragment>
                 })
                     : Movie.active ? Movie.data.map((data, index) => {
 
                         return <React.Fragment key={index}>
-                            <Link to={`/movie/${data.id}`}>
+                            <a href={`/movie/${data.id}`}>
                                 <div>
                                     <img src={`${IMAGE_URL}/w185${data.poster_path}`} alt="hero"></img>
                                     <p><span className="vote-average">{data.vote_average.toFixed(1)}</span>{data.title} </p>
                                 </div>
 
-                            </Link>
+                            </a>
                         </React.Fragment>
                     })
                         : People ? People.data.map((data, index) => {
                             return <React.Fragment key={index}>
-                                <Link to={`/person/${data.id}`}>
+                                <a href={`/person/${data.id}`}>
                                     <img src={`${IMAGE_URL}/w185${data.profile_path}`} alt="hero"></img>
                                     <p><span className="vote-average">{`${Math.round(data.popularity)}%`}</span>{data.name}</p>
-                                </Link>
+                                </a>
                             </React.Fragment>
                         })
-                            : <h1>Hi</h1>}
+                            : <h1>Loading</h1>}
             </Carousel>
         </div>
     )

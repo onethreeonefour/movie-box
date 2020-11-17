@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { API_URL, API_KEY, IMAGE_URL } from '../../Config'
-import { Link } from 'react-router-dom'
+
 
 function Advert() {
     /*set background image - in this case we're just gonna make it star wars
@@ -76,24 +76,25 @@ function Advert() {
                 </div>
                 <h2>Find Similar Movies From Certified Classics</h2>
                 <div className="advert-classics">
-                    <Link to={`/movie/11`}>
+
+                    <a href={`/movie/11`}>
                         <img src={`${IMAGE_URL}/w185${starWars.poster_path}`} alt="hero"></img>
-                    </Link>
-                    <Link to={`/movie/278`}>
+                    </a>
+                    <a href={`/movie/238`}>
                         <img src={`${IMAGE_URL}/w185${godFather.poster_path}`} alt="hero"></img>
-                    </Link>
-                    <Link to={`/movie/238`}>
+                    </a>
+                    <a href={`/movie/278`}>
                         <img src={`${IMAGE_URL}/w185${shawShank.poster_path}`} alt="hero"></img>
-                    </Link>
-                    <Link to={`/movie/680`}>
+                    </a>
+                    <a href={`/movie/680`}>
                         <img src={`${IMAGE_URL}/w185${pulpFiction.poster_path}`} alt="hero"></img>
-                    </Link>
-                    <Link to={`/movie/122`}>
+                    </a>
+                    <a href={`/movie/122`}>
                         <img src={`${IMAGE_URL}/w185${lotr.poster_path}`} alt="hero"></img>
-                    </Link>
-                    <Link to={`/movie/218`}>
+                    </a>
+                    <a href={`/movie/218`}>
                         <img src={`${IMAGE_URL}/w185${terminator.poster_path}`} alt="hero"></img>
-                    </Link>
+                    </a>
                 </div>
                 <a href="https://www.themoviedb.org/signup" className="join-today-button">Join Today</a>
             </div >
