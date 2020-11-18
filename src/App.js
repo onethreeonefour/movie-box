@@ -3,7 +3,8 @@ import Footer from './Components/Navigation/Footer';
 import Landing from './Components/Landing/Landing'
 import Movie from './Components/Movie/Movie';
 import TV from './Components/TV/TV';
-import { Switch, Route } from "react-router-dom"
+import TVSeason from './Components/TV/TVSeason';
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/movie/:id" component={Movie} />
           <Route exact path="/tv/:id" component={TV} />
+          <Route exact path="/tv/:id/:title/season/:seasonId" component={TVSeason} />
         </Switch>
       </div>
       <Footer />
