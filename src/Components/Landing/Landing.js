@@ -10,6 +10,8 @@ function Landing(props) {
     const [Query, setQuery] = useState("");
     const [Movie, setMovie] = useState(true)
     const [TV, setTV] = useState(false);
+    const [People, setPeople] = useState(false);
+    const [Placeholder, setPlaceholder] = useState("Searching Movies..");
     useEffect(() => {
         fetch(`${API_URL}movie/popular?api_key=${API_KEY}`)
             .then(res => res.json())
@@ -28,18 +30,36 @@ function Landing(props) {
     }
 
     const handleSubmit = () => {
-        props.history.push(`/search/${Query}`);
+        if (TV) {
+            props.history.push(`/search/tv/${Query}`);
+        }
+        else if (People) {
+            props.history.push(`/search/person/${Query}`);
+        }
+        else if (Movie) {
+            props.history.push(`/search/movie/${Query}`);
+        }
     }
 
     const onChangeSearchInput = (e) => {
-        if (e.target.name === 'tv') {
-
+        //console.log(e.target.name)
+        if (e.target.name === 'TV') {
             setTV(true)
             setMovie(false)
+            setPeople(false)
+            setPlaceholder("Searching For Television Shows...")
         }
-        else {
+        else if (e.target.name === 'Movie') {
             setTV(false)
             setMovie(true)
+            setPeople(false)
+            setPlaceholder("Searching For Movies...")
+        }
+        else if (e.target.name === 'People') {
+            setTV(false)
+            setMovie(false)
+            setPeople(true)
+            setPlaceholder("Searching For People...")
         }
     }
 
@@ -52,27 +72,28 @@ function Landing(props) {
                     <div className="hero-grid" >
                         <div>
                             <h1>Welcome To The MovieBox</h1>
-                            <h2>Millions of Movies, TV Shows - Curated by the fans.</h2>
+                            <h2>Millions of Movies, TV Shows and People. By the Fans.</h2>
                             <form onSubmit={handleSubmit}>
                                 <input
                                     value={Query}
                                     type="input"
                                     required
                                     onChange={onChangeSearch}
+                                    placeholder={Placeholder}
                                 ></input>
                                 <button>Search</button>
-                                <div className="radio-group" onChange={onChangeSearchInput}>
-                                    <div>
-                                        <input type="radio" name="movie" value={Movie} checked={Movie}></input>
-                                        <label htmlFor="movie">Movie</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" name="tv" value={TV} checked={TV}></input>
-                                        <label htmlFor="tv">TV</label>
-                                    </div>
-
-                                </div>
                             </form>
+                            <div className="button-group">
+                                <div>
+                                    {Movie ? <button value={Movie} name="Movie" style={{ backgroundColor: "#05cfd3" }} >Movie</button> : <button value={Movie} name="Movie" onClick={onChangeSearchInput}>Movie</button>}
+                                </div>
+                                <div>
+                                    {TV ? <button value={TV} name="TV" style={{ backgroundColor: "#05cfd3" }}>TV</button> : <button value={TV} name="TV" onClick={onChangeSearchInput}>TV</button>}
+                                </div>
+                                <div>
+                                    {People ? <button value={People} name="People" style={{ backgroundColor: "#05cfd3" }}>People</button> : <button value={People} name="People" onClick={onChangeSearchInput}>People</button>}
+                                </div>
+                            </div>
                         </div>
 
                     </div>

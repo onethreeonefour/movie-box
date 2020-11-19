@@ -23,7 +23,7 @@ function App() {
             <Route exact path="/tv/:id/:title/season/:seasonId" component={TVSeason} />
             <Route exact path="/tv/:id/:title/season/:seasonNumber/episode/:episodeNumber" component={TVEpisode} />
             <Route exact path="/person/:id" component={Person} />
-            <Route exact path="/search/:query" component={Search} />
+            <Route exact path="/search/:type/:query" component={Search} />
           </Switch>
         </div>
         <Footer />
