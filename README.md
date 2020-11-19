@@ -2,6 +2,9 @@
 
 ## Technologies 
 -SASS
--Flickity
+
+-React Multi Carousel
+
+-Simple React Lightbox
+
 -TheMovieDatabase API
--Axios

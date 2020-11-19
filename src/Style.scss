@@ -78,6 +78,10 @@ button {
     width: 185px;
     height: 278px;
 }
+.gradient {
+    background-repeat: repeat;
+    object-fit: cover;
+}
 
 //End Global
 
@@ -108,6 +112,12 @@ button {
         width: 100%;
         font-size: 1.5rem;
     }
+    .radio-group {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
     button {
         padding: 1rem;
         background-color: $green;
@@ -291,7 +301,6 @@ button {
 //Movie Page End
 
 //TV Page
-
 .season-container {
     width: 90%;
     color: white;
@@ -314,7 +323,7 @@ button {
         }
     }
 }
-
+//TV Season Page
 .season-episode-container {
     width: 90%;
     color: white;
@@ -330,9 +339,7 @@ button {
         background-color: #131313;
         padding: 1.5rem;
         transition: all 0.4s ease-in-out;
-        h4 {
-            padding: 0.5rem 0 1rem 0;
-        }
+
         h5 {
             margin-top: 1rem;
         }
@@ -342,5 +349,88 @@ button {
     }
     .season-episode-card:hover {
         background-color: black;
+    }
+}
+//TV Episode Container
+.tv-episode-container {
+    width: 90%;
+    margin: auto;
+    color: white;
+    padding: 2rem 0 2rem 0;
+    .guest-star-container {
+        display: flex;
+        overflow: auto;
+        gap: 1rem;
+        img {
+            border-radius: 5px;
+        }
+    }
+}
+.tv-episode-image-container {
+    width: 90%;
+    margin: auto;
+    color: white;
+    padding: 2rem 0 2rem 0;
+    .tv-images-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        img {
+            height: auto;
+            max-width: 100%;
+            object-fit: cover;
+            padding-top: 1rem;
+            cursor: pointer;
+        }
+    }
+}
+//TV End
+
+//Person Page
+
+.person-container {
+    height: auto;
+    object-fit: cover;
+    color: white;
+    padding: 3rem 0 3rem 0;
+    h4 {
+        padding: 1rem 0 1rem 0;
+    }
+    .person-grid {
+        height: 80vh;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: auto auto;
+        width: 70%;
+        gap: 3rem;
+        margin: auto;
+        img {
+            border-radius: 5px;
+        }
+    }
+    .person-facts {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
+.star-container {
+    width: 90%;
+    margin: auto;
+    color: white;
+    padding: 2rem 0 2rem 0;
+    h1 {
+        padding-bottom: 1rem;
+    }
+    .star-credit-container {
+        display: flex;
+        overflow: auto;
+        gap: 1rem;
+        img {
+            border-radius: 5px;
+            max-height: 475px;
+            padding-bottom: 0.5rem;
+        }
     }
 }

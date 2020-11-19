@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from 'react-router-dom';
 import Error from '../../Images/error.svg'
+import Blank from '../../Images/404.png'
 
 
 const responsive = {
@@ -92,7 +93,7 @@ function Movie(props) {
                 }}>
                     <div className="heading-grid">
                         <div>
-                            <img src={`${IMAGE_URL}/w342${Movie.poster_path}`} alt="poster" />
+                            {Movie.poster_path !== null ? <img src={`${IMAGE_URL}/w342${Movie.poster_path}`} alt="poster" /> : <img src={Blank} alt="poster"></img>}
                         </div>
                         <div>
                             <h1>{Movie.title}</h1>
@@ -113,7 +114,8 @@ function Movie(props) {
                         <p>Budget: {Movie.budget.toFixed(2)}</p>
                         <p>Revenue: {Movie.revenue.toFixed(2)}</p>
                         <p>Status: {Movie.status}</p>
-                        <p>Language: {Movie.spoken_languages[0].name}</p>
+                        {Movie.spoken_languages.length > 0 ? <p>Language: {Movie.spoken_languages[0].name}</p> : <span></span>}
+
                         <p>Popularity: <span className="user-score">{Movie.popularity.toFixed(1)}</span></p>
                         <h2>Keywords</h2>
                         {Keywords.map((words, index) => {
