@@ -31,7 +31,6 @@ function Search(props) {
                     document.title = `Searching For - ${props.match.params.query}`;
                 })
         }
-        v
     }, []);
     return (
         <div>
