@@ -18,14 +18,14 @@ function TrendingMovies() {
 
     useEffect(() => {
 
-        fetch(`${API_URL}tv/popular/?api_key=${API_KEY}&language=en-US&page=1`)
+        fetch(`${API_URL}tv/popular?api_key=${API_KEY}&language=en-US&page=1`)
             .then(res => res.json())
             .then(res => {
                 setTV({ data: res.results, active: true });
 
             })
 
-        fetch(`${API_URL}movie/now_playing/?api_key=${API_KEY}&language=en-US&page=1`)
+        fetch(`${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
             .then(res => res.json())
             .then(res => {
                 setMovie({ data: res.results, active: false });
@@ -33,7 +33,7 @@ function TrendingMovies() {
 
 
 
-        fetch(`${API_URL}person/popular/?api_key=${API_KEY}&language=en-US&page=1`)
+        fetch(`${API_URL}person/popular?api_key=${API_KEY}&language=en-US&page=1`)
             .then(res => res.json())
             .then(res => {
                 setPeople({ data: res.results, active: false });
