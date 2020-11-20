@@ -503,7 +503,12 @@ button {
             margin: auto;
             width: 90%;
         }
+        .advert-classics {
+            justify-content: start;
+            align-items: flex-start;
+        }
     }
+
     //Movie-TV Page
     .heading-container {
         height: auto;
