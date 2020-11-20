@@ -47,7 +47,7 @@ function TVEpisode(props) {
                         </div>
                     </div>
                 </div> :
-                <div className="loading-container">Loading</div>}
+                <div className="loading-container"><h1>Loading</h1></div>}
             {Detail && Detail.guest_stars.length > 0 ?
                 <div className="tv-episode-container">
                     <h1>Guest Stars</h1>

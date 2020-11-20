@@ -43,10 +43,7 @@ button {
 .vote-average {
     background-color: $red;
     color: white;
-    position: fixed;
-    top: 0;
     padding: 1rem;
-    border-radius: 50%;
     font-weight: bolder;
 }
 .loading-container {
@@ -137,12 +134,18 @@ button {
     }
 }
 
-//Landing Carousel
+//Landing Flex
 .trending-container {
     margin: auto;
     padding: 4rem 3rem 5rem 3rem;
     background-color: rgb(5, 5, 5);
     color: white;
+    .trending-card-container {
+        display: flex;
+        overflow: auto;
+        gap: 2rem;
+        padding-bottom: 1rem;
+    }
     .trending-button {
         display: inline-flex;
         gap: 0.5rem;
@@ -189,6 +192,7 @@ button {
 
     .advert-classics {
         display: flex;
+        overflow: auto;
         justify-content: center;
         align-items: center;
         gap: 2rem;
@@ -288,6 +292,11 @@ button {
     margin: auto;
     color: white;
     padding: 1rem 0 1rem 0;
+    .similar-movies-card {
+        display: flex;
+        overflow: auto;
+        gap: 1rem;
+    }
 }
 .keyword-grid {
     display: inline-flex;
@@ -313,14 +322,18 @@ button {
     color: white;
     margin: auto;
     padding: 2rem 0 2rem 0;
+    justify-content: center;
     align-items: center;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
     .season-card {
         h2 {
             padding: 0.5rem 0 0.5rem 0;
         }
         img {
+            width: 100%;
+            object-fit: cover;
             display: block;
             border-radius: 5px;
             transition: all 0.4s ease-in-out;
@@ -343,10 +356,11 @@ button {
     .season-episode-card {
         display: flex;
         gap: 2rem;
-        background-color: #131313;
+        background-color: #242424;
         padding: 1.5rem;
         transition: all 0.4s ease-in-out;
-
+        margin: 1rem 0 1rem 0;
+        border-radius: 5px;
         h5 {
             margin-top: 1rem;
         }
@@ -380,8 +394,10 @@ button {
     padding: 2rem 0 2rem 0;
     .tv-images-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
+        align-items: center;
+        justify-content: center;
         img {
             height: auto;
             max-width: 100%;
@@ -426,9 +442,8 @@ button {
     width: 90%;
     margin: auto;
     color: white;
-    padding: 2rem 0 2rem 0;
     h1 {
-        padding-bottom: 1rem;
+        padding: 2rem 0 2rem 0;
     }
     .star-credit-container {
         display: flex;
@@ -438,6 +453,144 @@ button {
             border-radius: 5px;
             max-height: 475px;
             padding-bottom: 0.5rem;
+        }
+    }
+}
+//Person Page End
+
+//Search Page Start
+.search-container {
+    color: white;
+    width: 70%;
+    margin: auto;
+
+    img {
+        display: block;
+    }
+    .search-card {
+        display: flex;
+        margin: 1rem 0 1rem 0;
+        border-radius: 0.5rem;
+        background-color: #242424;
+        transition: 0.2s all ease-in-out;
+    }
+    .search-card:hover {
+        background-color: black;
+    }
+    .search-card-info {
+        padding: 2rem;
+        h4 {
+            padding-top: 1rem;
+        }
+    }
+    .search-error {
+        height: 231px;
+    }
+}
+//Media Queries
+//Ipad Size - To Mobile
+@media screen and (max-width: 1024px) {
+    //Landing Page
+    .hero-container {
+        .hero-grid {
+            width: 90%;
+            margin: auto;
+        }
+    }
+    .advert-container {
+        padding: 1.5rem;
+        .advert-grid {
+            margin: auto;
+            width: 90%;
+        }
+    }
+    //Movie-TV Page
+    .heading-container {
+        height: auto;
+        .heading-grid {
+            height: auto;
+            padding: 4rem 0 4rem 0;
+            width: 90%;
+            gap: 2rem;
+            grid-template-columns: auto;
+        }
+    }
+    .movie-info-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+        .cast-grid {
+            display: flex;
+            overflow: auto;
+            text-align: left;
+            gap: 1.5rem;
+        }
+        .show-more {
+            margin: auto;
+        }
+    }
+    //TV Page
+    .season-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .season-episode-container {
+        .season-episode-card {
+            display: block;
+            h4 {
+                padding: 1rem 0 1rem 0;
+                font-size: 1.7rem;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .tv-episode-image-container {
+        .tv-images-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    //Person Page
+    .person-container {
+        .person-grid {
+            height: auto;
+            display: block;
+            width: 90%;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    //Landing Page
+
+    .trending-container {
+        padding: 4rem 1rem 5rem 1rem;
+        text-align: center;
+        .trending-card-container {
+            text-align: left;
+        }
+        .trending-button {
+            display: inline-block;
+        }
+        button {
+            margin: 0.5rem 0 0.5rem 0;
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    //Search Page
+    .search-container {
+        color: white;
+        width: 90%;
+        margin: auto;
+        display: grid;
+        img {
+            margin: auto;
+        }
+        .search-card {
+            display: block;
+        }
+        .search-card-info {
+            padding: 1rem 1rem 2rem 1rem;
         }
     }
 }

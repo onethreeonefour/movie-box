@@ -1,35 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { API_URL, API_KEY, IMAGE_URL } from '../../Config'
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { Link } from 'react-router-dom';
 import Error from '../../Images/error.svg'
 import Blank from '../../Images/404.png'
 
-
-const responsive = {
-    superLargeDesktop: {
-        // the naming can be any, depends on you.
-        breakpoint: { max: 4000, min: 3000 },
-        items: 8,
-        partialVisibilityGutter: 40
-    },
-    desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 5,
-        partialVisibilityGutter: 40
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 4,
-        partialVisibilityGutter: 40
-    },
-    mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 2,
-        partialVisibilityGutter: 40
-    }
-};
 
 function Movie(props) {
 
@@ -101,12 +74,12 @@ function Movie(props) {
                             <p>{Movie.release_date} • {Movie.genres.map((genre, index) => { return <span key={index}>{genre.name} </span> })} • {Movie.runtime} Minutes</p>
                             <h2>Overview</h2>
                             <p>{Movie.overview}</p>
-                            <h4>Directed By <Link to={`/person/${Director.id}`} >{Director.name}</Link></h4>
+                            <h4>Directed By <a href={`/person/${Director.id}`} >{Director.name}</a></h4>
                             <h4>User Score: <span className="user-score">{Movie.vote_average}</span> ({Movie.vote_count} voted)</h4>
                         </div>
                     </div>
                 </div> :
-                <div className="loading-container">Loading</div>}
+                <div className="loading-container"><h1>Loading</h1></div>}
             {Movie && Director && Similar && Keywords && Cast ?
                 <div className="movie-info-grid">
                     <div>
@@ -119,43 +92,39 @@ function Movie(props) {
                         <p>Popularity: <span className="user-score">{Movie.popularity.toFixed(1)}</span></p>
                         <h2>Keywords</h2>
                         {Keywords.map((words, index) => {
-                            return <Link to={`/keyword/${words.id}`} key={index}>
+                            return <a href={`/keyword/${words.id}`} key={index}>
                                 <div className="keyword-grid">
                                     <p className="chip">{words.name}</p>
                                 </div>
 
-                            </Link>
+                            </a>
                         })}
                     </div>
                     <div className="cast-grid">
-                        <Link to={`/person/${Director.id}`}>
+                        <a href={`/person/${Director.id}`}>
                             {Director.profile_path !== null ? <img src={`${IMAGE_URL}/w185${Director.profile_path}`} alt="director"></img> : <img src={Error} className="error" alt="cast"></img>}
                             <h4>Director</h4>
                             <p>{Director.name}</p>
-                        </Link>
+                        </a>
                         {Cast && Cast.length > 8 ? Cast.slice(0, Reveal).map((cast, index) => {
-                            return <Link to={`/person/${cast.id}`} key={index}>
+                            return <a href={`/person/${cast.id}`} key={index}>
                                 {cast.profile_path !== null ? <img src={`${IMAGE_URL}/w185${cast.profile_path}`} alt="cast"></img> : <img src={Error} className="error" alt="cast"></img>}
                                 <h4>{cast.character}</h4>
                                 <p>{cast.name}</p>
-                            </Link>
+                            </a>
                         }) : Cast.map((cast, index) => {
-                            <Link to={`/person/${cast.id}`} key={index}>
+                            <a href={`/person/${cast.id}`} key={index}>
                                 {cast.profile_path !== null ? <img src={`${IMAGE_URL}/w185${cast.profile_path}`} alt="cast"></img> : <img src={Error} className="error" alt="cast"></img>}
                                 <h4>{cast.character}</h4>
                                 <p>{cast.name}</p>
-                            </Link>
+                            </a>
                         })}
                         <button className="show-more" onClick={() => revealMore()}>Show More</button>
                     </div>
                 </div> : <div>Loading</div>}
             <div className="similar-movies-container">
                 <h1>More Like This</h1>
-                {Similar ? <Carousel
-                    responsive={responsive}
-                    className="carousel"
-                    partialVisible={true}
-                >
+                {Similar ? <div className="similar-movies-card">
                     {Similar.map((movie, index) => {
                         return <a href={`/movie/${movie.id}`} key={index}>
                             <div>
@@ -164,8 +133,7 @@ function Movie(props) {
                             </div>
                         </a>
                     })}
-
-                </Carousel> : <span></span>}
+                </div> : <span></span>}
 
             </div>
 

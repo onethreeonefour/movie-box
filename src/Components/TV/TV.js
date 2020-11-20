@@ -48,7 +48,7 @@ function TV(props) {
                         </div>
                     </div>
                 </div> :
-                <div className="loading-container">Loading</div>}
+                <div className="loading-container"><h1>Loading</h1></div>}
             <div className="season-container">
                 {TV ? TV.seasons.map((season, index) => {
                     return <a href={`/tv/${props.match.params.id}/${TV.name}/season/${season.season_number}`} key={index}>

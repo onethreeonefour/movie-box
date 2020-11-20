@@ -1,32 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { API_URL, API_KEY, IMAGE_URL } from '../../Config'
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { Link } from 'react-router-dom';
-
-const responsive = {
-    superLargeDesktop: {
-        // the naming can be any, depends on you.
-        breakpoint: { max: 4000, min: 3000 },
-        items: 8,
-        partialVisibilityGutter: 40
-    },
-    desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 6,
-        partialVisibilityGutter: 40
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 4,
-        partialVisibilityGutter: 40
-    },
-    mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 2,
-        partialVisibilityGutter: 40
-    }
-};
 
 function TrendingMovies() {
     const [People, setPeople] = useState({
@@ -96,18 +69,14 @@ function TrendingMovies() {
                 {Movie.active ? <button style={{ backgroundColor: "#03c4a1", color: "white" }}>Movies</button> : <button onClick={activateMovie}>Movies</button>}
                 {People.active ? <button style={{ backgroundColor: "#03c4a1", color: "white" }}>People</button> : <button onClick={activatePeople}>People</button>}
             </div>
-            <Carousel
-                responsive={responsive}
-
-                className="carousel"
-                partialVisible={true}
-            >
+            <div className="trending-card-container">
                 {TV.active ? TV.data.map((data, index) => {
                     return <React.Fragment key={index}>
                         <a href={`/tv/${data.id}`}>
                             <div>
+                                <span className="vote-average">{data.vote_average.toFixed(1)}</span>
                                 <img src={`${IMAGE_URL}/w185${data.poster_path}`} alt="hero"></img>
-                                <p><span className="vote-average">{data.vote_average.toFixed(1)}</span>{data.name} </p>
+                                <p>{data.name} </p>
                             </div>
 
                         </a>
@@ -118,8 +87,9 @@ function TrendingMovies() {
                         return <React.Fragment key={index}>
                             <a href={`/movie/${data.id}`}>
                                 <div>
+                                    <span className="vote-average">{data.vote_average.toFixed(1)}</span>
                                     <img src={`${IMAGE_URL}/w185${data.poster_path}`} alt="hero"></img>
-                                    <p><span className="vote-average">{data.vote_average.toFixed(1)}</span>{data.title} </p>
+                                    <p>{data.title} </p>
                                 </div>
 
                             </a>
@@ -128,13 +98,15 @@ function TrendingMovies() {
                         : People ? People.data.map((data, index) => {
                             return <React.Fragment key={index}>
                                 <a href={`/person/${data.id}`}>
+                                    <span className="vote-average">{`${Math.round(data.popularity)}%`}</span>
                                     <img src={`${IMAGE_URL}/w185${data.profile_path}`} alt="hero"></img>
-                                    <p><span className="vote-average">{`${Math.round(data.popularity)}%`}</span>{data.name}</p>
+                                    <p>{data.name}</p>
                                 </a>
                             </React.Fragment>
                         })
                             : <h1>Loading</h1>}
-            </Carousel>
+            </div>
+
         </div>
     )
 }

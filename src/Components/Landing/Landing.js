@@ -18,7 +18,7 @@ function Landing(props) {
             .then(res => {
                 //console.log(res)
                 setHero(res.results)
-                document.title = `MovieBox - The Ulimate Film Database`;
+                document.title = `MovieBox - The Ultimate Film Database`;
             })
 
     }, [])

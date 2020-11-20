@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { API_URL, API_KEY, IMAGE_URL } from '../../Config'
-import { Link } from 'react-router-dom';
 import Blank from '../../Images/404.png'
 import Pattern from '../../Images/dark-geometric.png'
 
@@ -16,6 +15,7 @@ function Person(props) {
             fetch(`${API_URL}person/${props.match.params.id}?api_key=${API_KEY}`)
                 .then(res => res.json())
                 .then(res => {
+
                     setDetail(res)
                     document.title = `MovieBox - ${res.name}`;
                 })
@@ -24,7 +24,6 @@ function Person(props) {
             fetch(`${API_URL}person/${props.match.params.id}/combined_credits?api_key=${API_KEY}`)
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res)
                     setCredits(res);
                     //Both starred and directed movies
                     if (res.cast.length > 0 && res.crew.length > 0) {
@@ -47,7 +46,9 @@ function Person(props) {
                                 setStarred(false)
                                 setDirected(true)
                             }
+                            return <span></span>
                         })
+
                     }
                 })
         }
@@ -105,6 +106,7 @@ function Person(props) {
                                     <p>{credits.release_date}</p>
                                 </a>
                             }
+                            return <span></span>
                         })}
                     </div>
                 </div>
@@ -128,6 +130,7 @@ function Person(props) {
                                     <p>{credits.release_date}</p>
                                 </a>
                             }
+                            return <span></span>
                         })}
                     </div>
                 </div>
@@ -151,6 +154,7 @@ function Person(props) {
                                     <p>{credits.release_date}</p>
                                 </a>
                             }
+                            return <span></span>
                         })}
                     </div>
                     <h1>Directed</h1>
@@ -170,6 +174,7 @@ function Person(props) {
                                     <p>{credits.release_date}</p>
                                 </a>
                             }
+                            return <span></span>
                         })}
                     </div>
                 </div>
