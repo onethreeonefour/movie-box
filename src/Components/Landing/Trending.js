@@ -18,20 +18,20 @@ function TrendingMovies() {
 
     useEffect(() => {
 
-        fetch(`${API_URL}tv/popular/?api_key=${API_KEY}&language=en-US&page=1`)
+        fetch(`http://api.themoviedb.org/3/tv/popular/?api_key=${API_KEY}&language=en-US&page=1`)
             .then(res => res.json())
             .then(res => {
                 setTV({ data: res.results, active: true });
             })
 
-        fetch(`${API_URL}movie/popular/?api_key=${API_KEY}&language=en-US&page=1`)
+        fetch(`http://api.themoviedb.org/3/movie/popular/?api_key=${API_KEY}&language=en-US&page=1`)
             .then(res => res.json())
             .then(res => {
                 setMovie({ data: res.results, active: false });
             })
 
 
-        fetch(`${API_URL}person/popular/?api_key=${API_KEY}&language=en-US&page=1`)
+        fetch(`http://api.themoviedb.org/3/person/popular/?api_key=${API_KEY}&language=en-US&page=1`)
             .then(res => res.json())
             .then(res => {
                 setPeople({ data: res.results, active: false });
