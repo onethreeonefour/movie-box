@@ -285,6 +285,7 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   color: white;
+  align-items: center;
   h1,
   h2,
   p {
