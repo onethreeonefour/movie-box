@@ -25,7 +25,7 @@ $raleway: "Raleway", sans-serif;
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 *::-webkit-scrollbar-track-piece:end {
@@ -125,8 +125,9 @@ button {
   background-position: center;
   h1 {
     padding-bottom: 2rem;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 600;
+    text-shadow: 1px 1px 1px black;
   }
   h2 {
     font-weight: lighter;
@@ -165,8 +166,9 @@ button {
 //Landing Flex
 .trending-container {
   margin: auto;
-  padding: 4rem 3rem 5rem 3rem;
-  background-color: rgb(5, 5, 5);
+  padding: 4rem;
+  width: 80%;
+
   color: white;
   .trending-card-container {
     display: flex;
@@ -214,6 +216,8 @@ button {
     padding-bottom: 2rem;
   }
   .advert-grid {
+    display: flex;
+    flex-direction: column;
     margin: auto;
     width: 60%;
   }
@@ -249,6 +253,7 @@ button {
 //Landing Finished
 
 //Movie-TV Page
+
 .heading-container {
   height: 80vh;
   background-repeat: no-repeat;
@@ -256,7 +261,6 @@ button {
   background-size: 100%, cover;
   background-position: center;
   color: white;
-
   .heading-grid {
     height: 80vh;
     display: grid;
@@ -278,13 +282,16 @@ button {
     }
   }
 }
+.movie-info-wrapper {
+  padding: 4rem 0;
+  background: radial-gradient(circle, rgba(60, 115, 235, 0.25) 0%, rgba(16, 46, 180, 0.2) 35%, rgba(0, 0, 0, 0.9) 100%);
+}
 .movie-info-grid {
-  width: 90%;
-  padding: 4rem 0 4rem 0;
+  width: 80%;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  color: white;
+  color: rgb(226, 222, 222);
   align-items: center;
   h1,
   h2,
@@ -300,24 +307,26 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     text-align: center;
+    gap: 1rem;
   }
   .show-more {
     grid-column: 1/5;
-    background-color: $green;
+    background-color: $red;
     color: white;
     font-size: 1.1rem;
     margin: auto;
     padding: 1.25rem;
     text-transform: uppercase;
-    border: 1px solid $green;
+    border: 1px solid $red;
     border-radius: 5px;
     cursor: pointer;
     outline: none;
     margin-top: 1rem;
+    font-weight: 700;
   }
 }
 .similar-movies-container {
-  width: 90%;
+  width: 75%;
   margin: auto;
   color: white;
   padding: 1rem 0 1rem 0;
@@ -347,9 +356,13 @@ button {
 //Movie Page End
 
 //TV Page
+.season-wrapper {
+  padding: 4rem;
+  background: radial-gradient(circle, rgba(60, 115, 235, 0.25) 0%, rgba(16, 46, 180, 0.2) 35%, rgba(0, 0, 0, 0.9) 100%);
+}
 .season-container {
-  width: 90%;
   color: white;
+  width: 100%;
   margin: auto;
   padding: 2rem 0 2rem 0;
   justify-content: center;
@@ -374,21 +387,26 @@ button {
   }
 }
 //TV Season Page
+.season-episode-wrapper {
+  padding: 4rem 0.25rem;
+  background: radial-gradient(
+    circle,
+    rgba(60, 115, 235, 0.25) 0%,
+    rgba(16, 46, 180, 0.2) 35%,
+    rgba(3, 0, 24, 0.1) 100%
+  );
+}
 .season-episode-container {
-  width: 90%;
+  width: 100%;
   color: white;
   margin: auto;
   padding: 2rem 0 2rem 0;
-
-  h1 {
-    padding-bottom: 2rem;
-  }
   .season-episode-card {
     display: flex;
     gap: 2rem;
-    background-color: #242424;
+    background-color: rgb(14, 31, 66);
     padding: 1.5rem;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.2s ease-in-out;
     margin: 1rem 0 1rem 0;
     border-radius: 5px;
     h5 {
@@ -403,11 +421,21 @@ button {
   }
 }
 //TV Episode Container
+
+.tv-episode-wrapper {
+  padding: 4rem 0.25rem;
+  background: radial-gradient(
+    circle,
+    rgba(60, 115, 235, 0.25) 0%,
+    rgba(16, 46, 180, 0.2) 35%,
+    rgba(3, 0, 24, 0.1) 100%
+  );
+}
 .tv-episode-container {
-  width: 90%;
+  width: 100%;
   margin: auto;
   color: white;
-  padding: 2rem 0 2rem 0;
+
   .guest-star-container {
     display: flex;
     overflow: auto;
@@ -417,12 +445,17 @@ button {
     }
   }
 }
+.tv-episode-images-wrapper {
+  padding: 2rem 0.25rem;
+}
 .tv-episode-image-container {
-  width: 90%;
+  width: 100%;
   margin: auto;
   color: white;
-  padding: 2rem 0 2rem 0;
+
   .tv-images-grid {
+    width: 80%;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
@@ -519,6 +552,55 @@ button {
   }
 }
 //Media Queries
+@media screen and (min-width: 3840px) {
+  .heading-container {
+    .heading-grid {
+      width: 50%;
+    }
+  }
+  .trending-container,
+  .tv-episode-images-container,
+  .tv-episode-container,
+  .similar-movies-container,
+  .season-container,
+  .season-episode-container,
+  .movie-info-grid {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 2560px) {
+  .heading-container {
+    .heading-grid {
+      width: 70%;
+    }
+  }
+  .trending-container,
+  .tv-episode-images-container,
+  .tv-episode-container,
+  .season-container,
+  .similar-movies-container,
+  .season-episode-container,
+  .movie-info-grid {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  .heading-container {
+    .heading-grid {
+      width: 85%;
+    }
+  }
+  .trending-container,
+  .tv-episode-images-container,
+  .tv-episode-container,
+  .similar-movies-container,
+  .season-container,
+  .season-episode-container,
+  .movie-info-grid {
+    width: 85%;
+  }
+}
 //Ipad Size - To Mobile
 @media screen and (max-width: 1024px) {
   //Landing Page
@@ -551,7 +633,11 @@ button {
       grid-template-columns: auto;
     }
   }
+  .movie-info-wrapper {
+    padding: 2rem 1rem;
+  }
   .movie-info-grid {
+    width: 95%;
     grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
     .cast-grid {
@@ -613,6 +699,15 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
+  .trending-container,
+  .tv-episode-images-container,
+  .tv-episode-container,
+  .similar-movies-container,
+  .season-container,
+  .season-episode-container,
+  .movie-info-grid {
+    width: 95%;
+  }
   //Search Page
   .search-container {
     color: white;
