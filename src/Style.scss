@@ -6,6 +6,10 @@ $red: #c62a88;
 $raleway: "Raleway", sans-serif;
 //Global
 * {
+  scrollbar-color: white transparent;
+  scrollbar-width: thin;
+}
+* {
   margin: 0;
   padding: 0;
 }
@@ -17,7 +21,8 @@ $raleway: "Raleway", sans-serif;
 }
 
 *::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
+  height: 6px;
   background-color: #f5f5f500;
 }
 
